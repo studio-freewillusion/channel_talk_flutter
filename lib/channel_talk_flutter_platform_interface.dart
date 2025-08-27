@@ -170,4 +170,9 @@ abstract class ChannelTalkFlutterPlatform extends PlatformInterface {
   Future<bool?> hidePopup() {
     throw UnimplementedError('hidePopup() has not been implemented.');
   }
+
+  Future<bool?> setPreventDefaultUrlClick(bool prevent) {
+    throw UnimplementedError(
+        'setPreventDefaultUrlClick() has not been implemented.');
+  }
 }
