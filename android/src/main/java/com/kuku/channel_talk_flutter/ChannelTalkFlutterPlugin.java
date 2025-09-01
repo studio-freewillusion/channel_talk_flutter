@@ -117,6 +117,8 @@ public class ChannelTalkFlutterPlugin implements FlutterPlugin, MethodCallHandle
       setAppearance(call, result);
     } else if (call.method.equals("hidePopup")) {
       hidePopup(call, result);
+    } else if (call.method.equals("setPreventDefaultUrlClick")) {
+      setPreventDefaultUrlClick(call, result);
     } else {
       result.notImplemented();
     }
@@ -481,6 +483,17 @@ public class ChannelTalkFlutterPlugin implements FlutterPlugin, MethodCallHandle
 
   public void hidePopup(@NonNull MethodCall call, @NonNull final Result result) {
     ChannelIO.hidePopup();
+    result.success(true);
+  }
+  
+  public void setPreventDefaultUrlClick(@NonNull MethodCall call, @NonNull final Result result) {
+    Boolean prevent = call.argument("prevent");
+    if (prevent == null) {
+      result.error("UNAVAILABLE", "Missing argument(prevent)", null);
+      return;
+    }
+    
+    channelTalkEventHandler.setPreventDefaultUrlClick(prevent);
     result.success(true);
   }
 

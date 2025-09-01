@@ -229,4 +229,11 @@ class MethodChannelChannelTalkFlutter extends ChannelTalkFlutterPlatform {
   Future<bool?> hidePopup() {
     return methodChannel.invokeMethod('hidePopup');
   }
+
+  @override
+  Future<bool?> setPreventDefaultUrlClick(bool prevent) {
+    return methodChannel.invokeMethod('setPreventDefaultUrlClick', {
+      'prevent': prevent,
+    });
+  }
 }

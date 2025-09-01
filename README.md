@@ -679,6 +679,19 @@ It is valid when creating a new user. The language of the user that already exis
             <td></td>
             <td>Mobile</td>
         </tr>
+        <!-- setPreventDefaultUrlClick -->
+        <tr>
+            <td>setPreventDefaultUrlClick</td>
+            <td>
+                Overrides Channel Talk’s default URL click behavior. When enabled, clicks are passed to the app’s onUrlClicked listener instead of opening in the browser.
+            </td>
+            <td>prevent*</td>
+            <td>bool</td>
+            <td>
+                If true, URL clicks will be delegated to the app's listener through onUrlClicked event instead of opening in the default browser. If false, URLs will open in the default browser as normal.
+            </td>
+            <td>Mobile</td>
+        </tr>
     </tbody>
 </table>
 

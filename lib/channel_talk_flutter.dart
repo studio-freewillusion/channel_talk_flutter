@@ -262,4 +262,11 @@ class ChannelTalk {
   static Future<bool?> hidePopup() {
     return ChannelTalkFlutterPlatform.instance.hidePopup();
   }
+
+  static Future<bool?> setPreventDefaultUrlClick({
+    required bool prevent,
+  }) {
+    return ChannelTalkFlutterPlatform.instance
+        .setPreventDefaultUrlClick(prevent);
+  }
 }

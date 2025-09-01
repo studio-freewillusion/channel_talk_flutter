@@ -67,6 +67,8 @@ public class ChannelTalkFlutterPlugin: NSObject, FlutterPlugin {
         self.setAppearance(call, result)
       case "hidePopup":
         self.hidePopup(call, result)
+      case "setPreventDefaultUrlClick":
+        self.setPreventDefaultUrlClick(call, result)
       
       default:
         result(FlutterMethodNotImplemented)
@@ -414,6 +416,17 @@ public class ChannelTalkFlutterPlugin: NSObject, FlutterPlugin {
 
   private func hidePopup(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
     ChannelIO.hidePopup()
+    result(true)
+  }
+  
+  private func setPreventDefaultUrlClick(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
+    guard let argMaps = call.arguments as? Dictionary<String, Any>,
+      let prevent = argMaps["prevent"] as? Bool else {
+      result(FlutterError(code: call.method, message: "Missing argument", details: nil))
+      return
+    }
+    
+    channelTalkEventHandler?.setPreventDefaultUrlClick(prevent)
     result(true)
   }
 

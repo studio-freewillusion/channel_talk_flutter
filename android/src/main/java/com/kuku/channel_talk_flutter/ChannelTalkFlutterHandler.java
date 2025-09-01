@@ -10,9 +10,14 @@ import java.util.Map;
 
 class ChannelTalkFlutterHandler implements ChannelPluginListener {
     private MethodChannel channel;
+    private boolean preventDefaultUrlClick = false;
 
     public ChannelTalkFlutterHandler(MethodChannel methodChannel) {
         channel = methodChannel;
+    }
+    
+    public void setPreventDefaultUrlClick(boolean prevent) {
+        this.preventDefaultUrlClick = prevent;
     }
 
     @Override
@@ -51,7 +56,7 @@ class ChannelTalkFlutterHandler implements ChannelPluginListener {
     @Override
     public boolean onUrlClicked(String url) {
         channel.invokeMethod("onUrlClicked", url);
-        return false;
+        return preventDefaultUrlClick;
     }
 
     @Override
